@@ -1,0 +1,46 @@
+Ci sono 3 parole segrete che descrivono cosa fai:
+
+Fermo (non ti muovi)
+Camminare (passeggi un po’)
+Correre (corri forte)
+
+E ci sono 4 tipi di suoni che il robot sente:
+
+Quiet (silenzioso)
+Soft (dolce, piano)
+Medium (medio)
+Loud (forte)
+
+Il robot sa come iniziare
+Il robot pensa all’inizio che forse sei fermo, o cammini o corri, con alcune probabilità (come una scommessa sulle possibilità).
+Il robot sa anche come cambi da uno stato all’altro
+Per esempio, è più probabile che se stai camminando poi continui a camminare, ma qualche volta magari inizi a correre.
+
+Il robot sa quali suoni sentirà in ogni stato
+
+Se sei fermo, sentirà più spesso suoni Quiet o Soft
+Se stai correndo, sentirà più spesso suoni Loud
+Se cammini, sentirà suoni tra Soft e Medium
+
+Il robot inventa una sequenza
+Il robot “finge” di osservare una serie di suoni e cerca di indovinare quali stati corrispondono a quei suoni (se eri fermo, camminavi o correvi).
+
+Il robot prova a indovinare
+Usando il suo gioco di probabilità, il robot cerca la strada più probabile per spiegare i suoni con una sequenza di stati (fermo, camminare, correre).
+
+Il gioco ci mostra come va
+Alla fine vediamo:
+
+Quanto il robot ha indovinato bene
+Quali stati ha confuso (per esempio se ha sbagliato tra camminare e correre)
+Quanto spesso cambia idea sugli stati
+Le regole che usa per capire i suoni e come si muovono gli stati
+
+Come si vede?
+C’è un grafico che mostra nel tempo i suoni sentiti (come puntini blu).
+Mostra anche la linea nera di cosa era vero davvero (stato reale)
+E la linea rossa di cosa il robot ha indovinato (stato predetto)
+Lo sfondo colorato aiuta a capire facilmente quando il robot pensa che sei fermo, cammini o corri.
+
+In poche parole:
+Il robot ascolta i suoni, prova a capire cosa stai facendo, e noi vediamo se ha indovinato o no!
