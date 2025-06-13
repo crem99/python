@@ -1,0 +1,33 @@
+Probabilità Logaritmica (Log-Likelihood)
+La probabilità logaritmica (spesso indicata come logprob in hmmlearn) è un valore che indica quanto è probabile che il modello generi la sequenza di osservazioni data la sequenza di stati nascosti predetta.
+
+Valore: Questo valore sarà sempre negativo (o zero se la probabilità è 1, ma è rarissimo). Più il valore è vicino allo zero, maggiore è la probabilità che la sequenza osservata sia stata generata dal modello in quello specifico percorso di stati.
+
+A Cosa Serve:
+
+Confronto tra Modelli: È estremamente utile per confrontare diversi modelli HMM sullo stesso set di dati. Un modello con un logprob più alto (meno negativo) è considerato migliore perché attribuisce una maggiore probabilità di aver generato i dati osservati.
+Anomalie: Un logprob molto basso (altamente negativo) per una sequenza potrebbe indicare che quella sequenza è molto improbabile per il tuo modello, suggerendo un'anomalia o che il modello non è ben addestrato per quel tipo di dati.
+Monitoraggio dell'Addestramento: Quando addestri un HMM (con model.fit()), la probabilità logaritmica dovrebbe aumentare ad ogni iterazione, indicando che il modello sta imparando a spiegare meglio i dati.
+Esempio: Se hai un logprob di -50.00 e un altro modello dà -100.00, il primo è significativamente migliore perché e ^−50 è molto più grande di e^−100.
+
+Accuratezza (Accuracy)
+L'accuratezza è una metrica di valutazione molto intuitiva che indica la percentuale di stati nascosti che il modello ha predetto correttamente rispetto ai veri stati sottostanti.
+
+Valore: Varia da 0 (0%) a 1 (100%). Un'accuratezza di 1 significa che il modello ha predetto correttamente ogni singolo stato nella sequenza.
+
+A Cosa Serve:
+
+Misura di Correttezza: È una misura diretta della performance del modello nel decodificare la sequenza di stati nascosti.
+Facilità di Comprensione: È facile da capire: se l'accuratezza è 0.90 (90%), significa che il modello ha indovinato il 90% degli stati correttamente.
+Limitazioni: Sebbene utile, l'accuratezza da sola può essere fuorviante in dataset sbilanciati. Ad esempio, se uno stato ("Fermo") compare nel 95% della sequenza, un modello che predice sempre "Fermo" avrebbe un'accuratezza del 95% pur essendo inutile. 
+Per questo motivo, la matrice di confusione è un complemento essenziale.
+Esempio: Se il tuo codice stampa Accuratezza della Decodifica: 92.50%, significa che su 100 punti temporali nella sequenza, il modello ha identificato correttamente lo stato nascosto in 92 o 93 di essi.
+
+In Sintesi: Come Usare Queste Metriche Insieme
+L'accuratezza ti dice "quanti" stati sono stati indovinati correttamente.
+La probabilità logaritmica ti dice "quanto è ben spiegata" l'intera sequenza di osservazioni dal modello, 
+dato il percorso di stati.
+Entrambe sono cruciali: un'alta accuratezza indica che la decodifica degli stati è buona, 
+mentre un logprob elevato (meno negativo) suggerisce che il modello è una buona rappresentazione dei dati. 
+Se uno dei due valori è basso, potresti dover rivedere i tuoi parametri (matrici di transizione/emissione) 
+o l'assunto del modello (ad esempio, se le osservazioni sono davvero discrete o meglio modellate da una distribuzione continua).
